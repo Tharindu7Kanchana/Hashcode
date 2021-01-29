@@ -2,11 +2,17 @@ package com.practice;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
+
+class sortByNoIngre implements Comparator<pizza>{
+
+    @Override
+    public int compare(pizza o1, pizza o2) {
+        return o1.getNum_Ingre() - o2.getNum_Ingre();
+    }
+}
 
 public class pizzaria {
     public static void main(String[] args) {
@@ -26,14 +32,14 @@ public class pizzaria {
         int T3 = parseInt(arr[2]);
         int T4 = parseInt(arr[3]);
 
-        List pizza = new ArrayList();
+        List<pizza> pizza = new ArrayList();
 
         while(sc.hasNextLine()){
-            pizza.add(sc.nextLine());
+            String[] pi = sc.nextLine().split(" ");
+            pizza.add(new pizza(parseInt(pi[0]), Arrays.copyOfRange(pi,1,parseInt(pi[0])+1)));
         }
-        for ( Object s : pizza
-             ) {
-            System.out.println(s.toString());
-        }
+        Collections.sort(pizza,new sortByNoIngre());
+
     }
 }
+

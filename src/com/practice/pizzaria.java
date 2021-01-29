@@ -20,13 +20,20 @@ public class pizzaria {
             e.printStackTrace();
         }
         String[] arr = sc.nextLine().split(" ");
+
         int M = parseInt(arr[0]);
         int T2 = parseInt(arr[1]);
         int T3 = parseInt(arr[2]);
         int T4 = parseInt(arr[3]);
+
         List pizza = new ArrayList();
+
         while(sc.hasNextLine()){
             pizza.add(sc.nextLine());
+        }
+        for ( Object s : pizza
+             ) {
+            System.out.println(s.toString());
         }
     }
 }
